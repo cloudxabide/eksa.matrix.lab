@@ -8,6 +8,24 @@ sudo sed -i -e 's/bind/bind -4/g' /etc/default/named
 sudo cp /etc/bind/named.conf.options /etc/bind/named.conf.options.bak
 curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_named.conf.options | sudo tee /etc/bind/named.conf.options
 sudo systemctl restart bind9  # You now have a caching nameserver using Google DNS as forwarders
+
+
+sudo cp /etc/bind/named.conf.local /etc/bind/named.conf.local.bak
+curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_named.conf.local | sudo tee /etc/bind/named.conf.local
+
+for ZONE in 12 13 14 15
+do 
+  curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_named.conf.local | sudo tee /etc/bind/named.conf.local
+done 
+  
+
+
+
+
+
+
+
+
  
 sudo mkdir -p /chroot/named
 cd /chroot/named
