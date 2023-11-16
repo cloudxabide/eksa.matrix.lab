@@ -3,10 +3,10 @@
 ;
 $TTL    604800
 @       IN      SOA     eks-admin.eksa.matrix.lab. root.eksa.matrix.lab. (
-                              2         ; Serial
+                     2023111501         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
-                        202311500         ; Expire
+                        36000         ; Expire
                          604800 )       ; Negative Cache TTL
 ;
 @       IN      NS      eks-admin.

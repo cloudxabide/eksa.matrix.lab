@@ -9,7 +9,7 @@ sudo cp /etc/bind/named.conf.options /etc/bind/named.conf.options.bak
 curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_named.conf.options | sudo tee /etc/bind/named.conf.options
 sudo systemctl restart bind9  # You now have a caching nameserver using Google DNS as forwarders
 
-
+# Add all of the zone files to the BIND config
 sudo cp /etc/bind/named.conf.local /etc/bind/named.conf.local.bak
 curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_named.conf.local | sudo tee /etc/bind/named.conf.local
 
@@ -19,6 +19,7 @@ do
   curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_zones_db.$ZONE.10.10.in-addr.arpa | sudo tee /etc/bind/zones/db.$ZONE.10.10.in-addr.arpa
 done 
 curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_zones_db.eksa.matrix.lab | sudo tee /etc/bind/zones/db.eksa.matrix.lab
+sudo systemctl restart bind9  # You now have a caching nameserver using Google DNS as forwarders
   
 
 
@@ -35,7 +36,10 @@ sudo mkdir -p dev etc/namedb/slave var/run
 
 
 
-named-checkzone eksa.matrix.lab /etc/bind/db.eksa.matrix.lab
+cd /etc/bind/zones
+named-checkzone eksa.matrix.lab db.eksa.matrix.lab
+for FILE in `ls *arpa`; do named-checkzone $(echo $FILE | sed 's/db.//g'; ) $FILE; done
+cd -
 
 
 
