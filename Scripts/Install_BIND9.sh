@@ -20,21 +20,6 @@ do
 done 
 curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_zones_db.eksa.matrix.lab | sudo tee /etc/bind/zones/db.eksa.matrix.lab
 sudo systemctl restart bind9  # You now have a caching nameserver using Google DNS as forwarders
-  
-
-
-
-
-
-
-
-
- 
-sudo mkdir -p /chroot/named
-cd /chroot/named
-sudo mkdir -p dev etc/namedb/slave var/run
-
-
 
 cd /etc/bind/zones
 named-checkzone eksa.matrix.lab db.eksa.matrix.lab
@@ -42,13 +27,11 @@ for FILE in `ls *arpa`; do named-checkzone $(echo $FILE | sed 's/db.//g'; ) $FIL
 cd -
 
 
+exit 0
 
-
-
-
+sudo resolvectl flush-caches
 
 references() {
 echo "https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-22-04"
-
 echo "Who knows how old this is?  https://help.ubuntu.com/community/BIND9ServerHowto"
 }
