@@ -13,10 +13,12 @@ sudo systemctl restart bind9  # You now have a caching nameserver using Google D
 sudo cp /etc/bind/named.conf.local /etc/bind/named.conf.local.bak
 curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_named.conf.local | sudo tee /etc/bind/named.conf.local
 
+mkdir -p /etc/bind/zones
 for ZONE in 12 13 14 15
 do 
-  curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_named.conf.local | sudo tee /etc/bind/named.conf.local
+  curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_zones_db.$ZONE.10.10.in-addr.arpa | sudo tee /etc/bind/zones/db.$ZONE.10.10.in-addr.arpa
 done 
+curl https://raw.githubusercontent.com/cloudxabide/eksa.matrix.lab/main/Files/etc_bind_zones_db.eksa.matrix.lab | sudo tee /etc/bind/zones/db.eksa.matrix.lab
   
 
 
