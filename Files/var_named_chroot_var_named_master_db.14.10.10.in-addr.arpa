@@ -1,0 +1,14 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     eks-admin.eksa.matrix.lab. root.eksa.matrix.lab. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      eks-admin.
+
+; also list other computers
