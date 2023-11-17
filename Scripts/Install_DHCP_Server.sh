@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#  Status: Complete/Done
+# Purpose:
+
 NEEDRESTART_MODE=a
 
 sudo apt install -y isc-dhcp-server
