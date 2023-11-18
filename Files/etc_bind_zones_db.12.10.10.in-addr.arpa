@@ -3,7 +3,7 @@
 ;
 $TTL    604800
 @       IN      SOA     eks-admin.eksa.matrix.lab. root.eksa.matrix.lab. (
-                     2023111501         ; Serial
+                     2023111801         ; Serial
                          604800         ; Refresh
                           86400         ; Retry
                         36000         ; Expire
@@ -16,3 +16,7 @@ $TTL    604800
 101	IN	PTR	host01.eksa.matrix.lab.
 102	IN	PTR	host02.eksa.matrix.lab.
 103	IN	PTR	host03.eksa.matrix.lab.
+; Application Endpoints
+200	IN	PTR	eks-control-plane.matrix.lab.
+201	IN	PTR	tinkerbell.matrix.lab.
+
