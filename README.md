@@ -1,5 +1,5 @@
 # eksa.matrix.lab
-I am deploying EKS Anywhere in my HomeLab.
+This is the chronicles of deploying EKS Anywhere in my HomeLab.
 
 A significant portion of this repo is likely not applicable in most situations.  I am essentially plumbing up a new interface on my Firewall, creating a new /22 CIDR off that interface, and starting from scratch.
 
@@ -7,8 +7,6 @@ Goal:  to create my own EKS Anywhere environment from bare metal (Intel NUCs) an
 
 ## Build EKS-ADMIN Host
 You will need to install Ubuntu on "Admin Host".  While I have ways of accomplishing this with automation, *that* is not in-scope to explain here.
-Install_BIND9.sh
-
 
 Install/Configure: 
 
