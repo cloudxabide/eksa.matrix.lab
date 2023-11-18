@@ -6,8 +6,10 @@
 #          But, will work awesome in my lab ;-)
 
 HARDWARE_INVENTORY=../Files/hardware.csv
-
 [ ! -f $HARDWARE_INVENTORY ] && { echo "ERROR: Hardware Inventory is not found."; exit 9; }
+
+
+PRIMARY_INTERFACE=$(route | grep '^default' | grep -o '[^ ]*$')
 
 # Figure out which column the MAC address is in the hardware inventory
 # This is needed as I have seen "hardware.csv" with different numbers of columns.  Some with the bmc info, others without
@@ -32,7 +34,7 @@ IFS=$saved_IFS
 
 for MAC in `cat $HARDWARE_INVENTORY | cut -f${MAC_COLUMN} -d"${DELIM_IFS}"` 
 do 
-  echo "sudo etherwake $MAC"
+  echo "sudo etherwake -i $PRIMARY_INTERFACE $MAC"
   #etherwake $MAC
 done
 
