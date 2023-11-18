@@ -3,7 +3,6 @@
 #  Status: Complete/Done
 # Purpose:
 
-NEEDRESTART_MODE=a
 
 # Allow sudo NOPASSWD
 SUDO_USER=mansible
@@ -14,7 +13,8 @@ echo "$SUDO_USER ALL=(ALL) NOPASSWD: ALL" | sudo tee  /etc/sudoers.d/$SUDO_USER-
 sudo apt upgrade -y
 sudo apt update -y
 
-PKGS="etherwake"
+NEEDRESTART_MODE=a
+PKGS="etherwake net-tools"
 sudo apt -y install $PKGS 
 
 # Unload problematic module at reboot via cron
