@@ -32,7 +32,7 @@ IFS=$saved_IFS
 
 for MAC in `cat $HARDWARE_INVENTORY | cut -f${MAC_COLUMN} -d"${DELIM_IFS}"` 
 do 
-  echo "etherwake $MAC"
+  echo "sudo etherwake $MAC"
   #etherwake $MAC
 done
 
