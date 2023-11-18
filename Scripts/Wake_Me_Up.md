@@ -5,6 +5,9 @@
 #    Note: This is a total hack and is ripe for a TON of issues in any sort of "uncontrolled environment"
 #          But, will work awesome in my lab ;-)
 
+
+SLEEPYTIME=10
+
 HARDWARE_INVENTORY=../Files/hardware.csv
 [ ! -f $HARDWARE_INVENTORY ] && { echo "ERROR: Hardware Inventory is not found."; exit 9; }
 
@@ -36,6 +39,12 @@ for MAC in `cat $HARDWARE_INVENTORY | cut -f${MAC_COLUMN} -d"${DELIM_IFS}"`
 do 
   echo "sudo etherwake -i $PRIMARY_INTERFACE $MAC"
   #etherwake $MAC
+  secs=$(($SLEEPYTIME))
+while [ $secs -gt 0 ]; do
+   echo -ne "$secs\033[0K\r"
+   sleep 1
+   : $((secs--))
+done 
 done
 
 exit 0
