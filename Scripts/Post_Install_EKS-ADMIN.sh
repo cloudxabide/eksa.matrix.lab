@@ -10,10 +10,10 @@ echo "Note:  you are going to be asked the login password for $SUDO_USER"
 echo "$SUDO_USER ALL=(ALL) NOPASSWD: ALL" | sudo tee  /etc/sudoers.d/$SUDO_USER-nopasswd-all
 
 # Update the system
-sudo apt upgrade -y
-sudo apt update -y
-
 NEEDRESTART_MODE=a
+sudo apt update -y
+sudo apt upgrade -y
+
 PKGS="etherwake net-tools"
 sudo apt -y install $PKGS 
 
@@ -46,5 +46,10 @@ if [ -d ~/.bashrc.d ]; then
 fi
 EOF
 curl https://raw.githubusercontent.com/cloudxabide/devops/main/Files/.bashrc.d_common | tee ~/.bashrc.d/common
+
+# Install Desktop GUI
+install_desktop() {
+  sudo apt install ubuntu-desktop
+}
 
 exit 0
