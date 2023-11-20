@@ -1,7 +1,7 @@
 # eksa.matrix.lab
 This is the chronicles of deploying EKS Anywhere in my HomeLab.
 
-A significant portion of this repo is likely not applicable in most situations.  I am essentially plumbing up a new interface on my Firewall, creating a new /22 CIDR off that interface, and starting from scratch.
+It is worth noting that a portion of this repo is likely not applicable in most situations.  I am essentially plumbing up a new interface on my Firewall, creating a new /22 CIDR off that interface, and starting from scratch - things you would not (or could not) need to do if you were in an enterprise situation.
 
 Goal:  to create my own EKS Anywhere environment from bare metal (Intel NUCs) and a USB stick with install media (Ubuntu Server 22.04).  I want this environment to be completely independent of everything else in my lab. 
 
@@ -15,6 +15,9 @@ Install/Configure:
   * [DHCP](Scripts/Install_DHCP_Server.sh)
   * [TFTP](Scripts/Install_TFTP.sh)
   * [WWW](Scripts/)
+
+## Deploy EKS Anywhere Cluster
+
 
 ## References
 [EKS Anywhere](https://anywhere.eks.amazonaws.com/)  
